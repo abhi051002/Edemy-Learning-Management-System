@@ -4,3 +4,16 @@
 * {
   font-family: Outfit;
 }
+
+@theme {
+  --text-course-details-heading-small: 26px;
+  --text-course-details-heading-small--line-height: 1;
+  --text-course-details-heading-large: 36px;
+  --text-course-details-heading-large--line-height: 1;
+  --text-home-heading-small: 34px;
+  --text-home-heading-small--line-height: 1;
+  --text-home-heading-large: 48px;
+  --text-home-heading-large--line-height: 1;
+  --text-default: 15px;
+  --text-default----line-height: 1;
+}
