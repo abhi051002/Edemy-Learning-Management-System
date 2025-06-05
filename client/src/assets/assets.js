@@ -278,6 +278,11 @@ export const dummyCourses = [
                 "userId": "user_2qjlgkAqIMpiR2flWIRzvWKtE0w",
                 "rating": 5,
                 "_id": "6773e37360cb0ab974342314"
+            },
+            {
+                "userId": "user_2qjlgkAqIMpiR2flWIRzvWKtE0w",
+                "rating": 3.2,
+                "_id": "6773e37360cb0ab974342314"
             }
         ],
         "createdAt": "2024-12-17T08:16:53.622Z",

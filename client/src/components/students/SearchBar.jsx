@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../../assets/assets";
-import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
 
 const SearchBar = ({ data }) => {
-  const navigate = useNavigate();
+  const { navigate } = useContext(AppContext);
   const [input, setInput] = useState(data ? data : "");
   const onSearchHandler = (e) => {
     e.preventDefault();
