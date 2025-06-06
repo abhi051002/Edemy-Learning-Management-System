@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { assets } from "../../assets/assets";
 import { AppContext } from "../../context/AppContext";
 
@@ -9,6 +9,10 @@ const SearchBar = ({ data }) => {
     e.preventDefault();
     input && navigate(`/course-list/${input}`);
   };
+  useEffect(() => {
+    setInput(data ? data : "");
+  }, [data]);
+
   return (
     <form
       action=""
