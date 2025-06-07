@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
+import { Line } from "rc-progress";
+import Footer from "../../components/students/Footer";
 
 const MyEnrollments = () => {
   const { enrolledCourses, calculateCourseDuration, navigate } =
@@ -40,6 +42,16 @@ const MyEnrollments = () => {
                     <p className="mb-1 max-sm:text-sm text-sm">
                       {course.courseTitle}
                     </p>
+                    <Line
+                      strokeWidth={1}
+                      percent={
+                        progressArray[index]
+                          ? (progressArray[index].lectureCompleted * 100) /
+                            progressArray[index].totalLectures
+                          : 0
+                      }
+                      className="bg-gray-300 rounded-full"
+                    />
                   </div>
                 </td>
                 <td className="px-4 py-3 max-sm:hidden">
@@ -75,6 +87,7 @@ const MyEnrollments = () => {
           </tbody>
         </table>
       </div>
+      <Footer />
     </>
   );
 };
