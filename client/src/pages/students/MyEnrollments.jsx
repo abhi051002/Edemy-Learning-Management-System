@@ -17,9 +17,9 @@ const MyEnrollments = () => {
   return (
     <>
       <div className="md:px-36 px-8 pt-10">
-        <h1 className="text-3xl font-semibold">My Enrollments</h1>
+        <h1 className="text-2xl font-semibold">My Enrollments</h1>
         <table className="md:table-auto table-fixed w-full overflow-hidden border border-gray-500/20 mt-10">
-          <thead className="text-gray-900 border-b border-gray-500/20 text-lg text-left max-sm:hidden">
+          <thead className="text-gray-900 border-b border-gray-500/20 text-sm text-left max-sm:hidden">
             <tr>
               <th className="px-4 py-3 font-semibold truncate">Course</th>
               <th className="px-4 py-3 font-semibold truncate">Duration</th>
@@ -37,7 +37,7 @@ const MyEnrollments = () => {
                     className="w-14 sm:w-24 md:w-28"
                   />
                   <div className="flex-1">
-                    <p className="mb-1 max-sm:text-sm text-lg">
+                    <p className="mb-1 max-sm:text-sm text-sm">
                       {course.courseTitle}
                     </p>
                   </div>

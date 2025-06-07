@@ -38,14 +38,14 @@ const CourseDetails = () => {
 
   return courseData ? (
     <>
-      <div className="flex md:flex-row flex-col-reverse gap-10 relative items-start justify-between md:px-36 px-8 md:pt-30 pt-20 text-left">
+      <div className="flex md:flex-row flex-col-reverse gap-10 relative items-start justify-between md:px-36 px-8 md:pt-20 pt-10 text-left">
         <div className="absolute top-0 left-0 w-full h-section-height bg-gradient-to-b from-cyan-100/70"></div>
         {/* Left Column */}
-        <div className="max-w-2xl z-10 text-gray-500">
+        <div className="max-w-xl z-10 text-gray-500">
           <h1 className="md:text-course-details-heading-large text-course-details-heading-small font-semibold text-gray-800">
             {courseData?.courseTitle}
           </h1>
-          <p className="pt-4 md:text-lg text-lg">
+          <p className="pt-4 md:text-base text-sm">
             {courseData?.courseDescription
               .replace(/<[^>]*>/g, "")
               .slice(0, 200)}
@@ -55,12 +55,12 @@ const CourseDetails = () => {
           </p>
 
           {/* Review and Rating */}
-          <div className="flex items-center space-x-2 pt-3 pb-1 text-lg">
+          <div className="flex items-center space-x-2 pt-3 pb-1">
             <p>{calculateRating(courseData)}</p>
             <div className="flex">
               {[...Array(5)].map((_, i) => (
                 <img
-                  className="w-4.5 h-4.5"
+                  className="w-3.5 h-3.5"
                   key={i}
                   src={
                     i < Math.floor(calculateRating(courseData))
@@ -71,22 +71,22 @@ const CourseDetails = () => {
                 />
               ))}
             </div>
-            <p className="text-blue-600 text-lg">
+            <p className="text-blue-600">
               ({courseData.courseRatings.length}{" "}
               {courseData.courseRatings.length > 1 ? "ratings" : "rating"})
             </p>
-            <p className="text-lg ">
+            <p>
               {courseData.enrolledStudents.length}{" "}
               {courseData.enrolledStudents.length > 1 ? "students" : "student"}
             </p>
           </div>
-          <p className="text-lg">
+          <p>
             Course by{" "}
             <span className="text-blue-600 underline">GreatStack</span>
           </p>
 
           <div className="pt-8 text-gray-800">
-            <h2 className="text-2xl font-semibold">Course Sturcture</h2>
+            <h2 className="text-xl font-semibold">Course Sturcture</h2>
             <div className="pt-5">
               {courseData.courseContent.map((chapter, index) => (
                 <div
@@ -105,11 +105,11 @@ const CourseDetails = () => {
                           openSections[index] ? "rotate-180" : ""
                         }`}
                       />
-                      <p className="text-sm md:text-lg font-medium">
+                      <p className="text-sm md:text-base font-medium">
                         {chapter.chapterTitle}
                       </p>
                     </div>
-                    <p className="text-sm md:text-lg">
+                    <p className="text-sm md:text-base">
                       {chapter.chapterContent.length} lectures -{" "}
                       {calculateChapterTime(chapter)}
                     </p>
@@ -133,13 +133,14 @@ const CourseDetails = () => {
                               {lecture.isPreviewFree && (
                                 <p
                                   className="text-blue-500 cursor-pointer"
-                                  onClick={() =>
+                                  onClick={() => {
                                     setPlayerData({
                                       videoId: lecture.lectureUrl
                                         .split("/")
                                         .pop(),
-                                    })
-                                  }
+                                    });
+                                    scrollTo(0, 0);
+                                  }}
                                 >
                                   Preview
                                 </p>
@@ -162,7 +163,7 @@ const CourseDetails = () => {
           </div>
 
           <div className="py-20 text-sm md:text-lg">
-            <h3 className="text-2xl font-semibold text-gray-800">
+            <h3 className="text-xl font-semibold text-gray-800">
               Coure Description
             </h3>
             <p
@@ -188,7 +189,7 @@ const CourseDetails = () => {
             />
           )}
           <div className="p-5">
-            <div className="flex items-center gap-2 text-lg">
+            <div className="flex items-center gap-2">
               <img
                 src={assets.time_left_clock_icon}
                 alt="time_left_clock_icon"
@@ -199,22 +200,22 @@ const CourseDetails = () => {
               </p>
             </div>
             <div className="flex gap-3 items-center pt-2">
-              <p className="text-gray-800 md:text-5xl text-3xl font-semibold">
+              <p className="text-gray-800 md:text-4xl text-2xl font-semibold">
                 {currency}
                 {(
                   courseData.coursePrice -
                   (courseData.discount * courseData.coursePrice) / 100
                 ).toFixed(2)}
               </p>
-              <p className="md:text-xl text-gray-500 line-through">
+              <p className="md:text-lg text-gray-500 line-through">
                 {currency}
                 {courseData.coursePrice}
               </p>
-              <p className="md:text-xl text-gray-500">
+              <p className="md:text-lg text-gray-500">
                 {courseData.discount}% off
               </p>
             </div>
-            <div className="flex items-center text-sm md:text-lg gap-4 pt-2 md:pt-4 text-gray-500">
+            <div className="flex items-center text-sm md:text-default gap-4 pt-2 md:pt-4 text-gray-500">
               <div className="flex items-center gap-1">
                 <img src={assets.star} alt="star_icon" />
                 <p>{calculateRating(courseData)}</p>
@@ -239,17 +240,17 @@ const CourseDetails = () => {
                 isAlreadyEnrolled
                   ? "bg-white text-blue-600 border border-blue-600"
                   : "bg-blue-600 text-white cursor-pointer"
-              } font-medium text-lg`}
+              } font-medium`}
               disabled={isAlreadyEnrolled}
             >
               {isAlreadyEnrolled ? "Already Enrolled!" : "Enroll Now"}
             </button>
 
             <div className="pt-6">
-              <p className="md:text-2xl text-xl font-medium text-gray-800">
+              <p className="md:text-xl text-lg font-medium text-gray-800">
                 What's in the course?
               </p>
-              <ul className="ml-4 pt-2 text-sm md:text-lg list-disc text-gray-500">
+              <ul className="ml-4 pt-2 text-sm md:text-default list-disc text-gray-500">
                 <li>Lifetime access with free updates.</li>
                 <li>Step-by-step, hands-on project guidance.</li>
                 <li>Downloadable resources and source code.</li>
