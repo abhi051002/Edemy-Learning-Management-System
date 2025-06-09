@@ -31,6 +31,7 @@ export const Navbar = () => {
                 onClick={() => {
                   navigate("/educator");
                 }}
+                className="cursor-pointer"
               >
                 {isEducator ? "Educator Dashboard" : "Become Educator"}
               </button>
